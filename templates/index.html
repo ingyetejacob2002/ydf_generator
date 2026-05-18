@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BENUE YOUTH AI LAB</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <h1>BYAL</h1>
+        <p>Create Your Participation Card</p>
+        <form method="POST" enctype="multipart/form-data">
+
+    <input
+        type="text"
+        name="name"
+        placeholder="Enter your name"
+        required
+    >
+
+    <input
+        type="file"
+        name="photo"
+        accept="image/*"
+        required
+    >
+
+    <button type="submit">
+        Generate
+    </button>
+
+    </form>
+    </div>
+    {% if name %}
+
+    <div class="generated-card" id="capture">
+
+    <div class="logo-header">
+    <img
+        src="{{ url_for('static', filename='ybal_logo.JPEG') }}"
+        class="logo-banner"
+    >
+    </div>
+
+    <!-- Applicant Image -->
+    {% if image_path %}
+    <img
+        src="{{ url_for('static', filename=image_path) }}"
+        class="profile-image"
+    >
+    {% endif %}
+
+    <!-- Applicant Name -->
+    <h2>{{ name }}</h2>
+
+    <!-- Message -->
+    <p>
+        I'm excited and honoured to announce that I've been selected
+        to participate in the Benue Youth AI Lab (BYAL) project.
+
+        BYAL is a transformative initiative focused on equipping
+        Benue youths with essential AI skills to thrive in Artificial
+        Intelligence and emerging technologies.
+    </p>
+
+    <!-- Apply Button -->
+    <a href="https://bit.ly/42GW8cZ" target="_blank" class="apply-btn">
+        APPLY NOW!
+    </a>
+
+</div>
+    <button onclick="downloadCard()" class="download-btn">
+        Download Card
+    </button>
+
+    {% endif %}
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+    function downloadCard() {
+      html2canvas(document.querySelector("#capture")).then(canvas => {
+        let link = document.createElement('a');
+        link.download = 'ydf-card.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}
+</script>
+
+</body>
+</html>
