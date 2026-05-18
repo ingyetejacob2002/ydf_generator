@@ -35,49 +35,80 @@
 
     </form>
     </div>
-    {% if name %}
+  {% if name %}
 
-    <div class="generated-card" id="capture">
+<div class="generated-card" id="capture">
 
+    <!-- Logo -->
     <div class="logo-header">
-    <img
-        src="{{ url_for('static', filename='ybal_logo.jpeg') }}"
-        class="logo-banner"
-    >
+        <img
+            src="{{ url_for('static', filename='ybal_logo.JPEG') }}"
+            class="logo-banner"
+        >
+
+        <h1 class="big-title">
+            BENUE YOUTH <br> AI LAB
+        </h1>
+
+        <div class="byal-box">
+            BYAL
+        </div>
     </div>
 
-    <!-- Applicant Image -->
-    {% if image_path %}
-    <img
-        src="{{ url_for('static', filename=image_path) }}"
-        class="profile-image"
-    >
-    {% endif %}
+    <!-- Middle -->
+    <div class="middle-section">
 
-    <!-- Applicant Name -->
-    <h2>{{ name }}</h2>
+        <!-- Left -->
+        <div class="left-side">
 
-    <!-- Message -->
-    <p>
-        I'm excited and honoured to announce that I've been selected
-        to participate in the Benue Youth AI Lab (BYAL) project.
+            {% if image_path %}
+            <img
+                src="{{ url_for('static', filename=image_path) }}"
+                class="profile-image"
+            >
+            {% endif %}
 
-        BYAL is a transformative initiative focused on equipping
-        Benue youths with essential AI skills to thrive in Artificial
-        Intelligence and emerging technologies.
-    </p>
+            <div class="name-tag">
+                {{ name }}
+            </div>
 
-    <!-- Apply Button -->
-    <a href="https://bit.ly/42GW8cZ" target="_blank" class="apply-btn">
-        APPLY NOW!
-    </a>
+        </div>
+
+        <!-- Right -->
+        <div class="right-side">
+
+            I’m excited and honoured to announce that
+            I’ve been selected to participate in the
+            Benue Youth AI Lab (BYAL) Project.
+
+            BYAL is a transformative initiative focused
+            on equipping Benue youths with essential
+            AI skills to thrive in Artificial Intelligence
+            and emerging technologies.
+
+        </div>
+
+    </div>
+
+    <!-- Apply -->
+    <div class="apply-section">
+        APPLY NOW:https://bit.ly/42GW8cZ
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <span>08137199871</span>
+        <span>youthupliftdev@gmail.com</span>
+    </div>
 
 </div>
-    <button onclick="downloadCard()" class="download-btn">
-        Download Card
-    </button>
 
-    {% endif %}
+<button onclick="downloadCard()" class="download-btn">
+    Download Card
+</button>
+
+{% endif %}
+   
     </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
